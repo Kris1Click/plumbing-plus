@@ -18,7 +18,7 @@
 	$customFooterCopyRightSpan = esc_attr(get_option('footer_copyright_span'));
 ?>
 
-	</div><!-- #content -->
+
 
 	<footer id="colophon" class="site-footer" role="contentinfo">
 		<div class="main-page wrench">

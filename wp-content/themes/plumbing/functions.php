@@ -174,12 +174,12 @@ require get_template_directory() . '/inc/jetpack.php';
 
 function create_posttype() 
 {
-	add_post_type_support('services', 'thumbnail');
+	add_post_type_support('services', 'thumbnail', 'excerpt');
     register_post_type( 'services',
         array(
             'labels' => array(
-                'name' => __( 'Services' ),
-                'singular_name' => __( 'Services' )
+            'name' => __( 'Services' ),
+            'singular_name' => __( 'Services' )
             ),
             'public' => true,
             'has_archive' => true,
@@ -189,6 +189,16 @@ function create_posttype()
 }
 
 add_action( 'init', 'create_posttype' );
+
+
+/**
+ * Enables the Excerpt meta box in Page edit screen.
+ */
+function wpcodex_add_excerpt_support_for_pages() {
+	add_post_type_support( 'services', 'excerpt' );
+}
+add_action( 'init', 'wpcodex_add_excerpt_support_for_pages' );
+
 
 // CUSTOM POST TYPES END
 
@@ -753,3 +763,14 @@ function register_menus() {
 add_action( 'init', 'register_menus' );
 
 // CUSTOM MENUS END
+
+// SVG SUPPORT 
+
+function cc_mime_types($mimes) {
+  $mimes['svg'] = 'image/svg+xml';
+  return $mimes;
+}
+
+add_filter('upload_mimes', 'cc_mime_types');
+
+// SVG SUPPORT END

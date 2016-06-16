@@ -7,9 +7,7 @@
  * @package OneClick Theme
  */
 
-get_header(); ?>
-
-<?php
+	get_header();
 	$customSectionTitle = esc_attr(get_option('specialists_section_title'));
 	$customVideoTitle = esc_attr(get_option('specialists_video_title'));
 	$customVideoURL = esc_attr(get_option('specialists_video_url'));
@@ -28,15 +26,15 @@ get_header(); ?>
 	$customButtonText = esc_attr(get_option('button_text'));
 	$customAboutTitle = esc_attr(get_option('about_section_title'));
 	$customAboutSubtitleOne = get_option('about_section_subtitle_one');
-	$customAboutContentOne = get_option('about_section_content_one');
+	$customAboutContentOne = esc_attr(get_option('about_section_content_one'));
 	$customAboutSubtitleTwo = get_option('about_section_subtitle_two');
-	$customAboutContentTwo = get_option('about_section_content_two');
+	$customAboutContentTwo = esc_attr(get_option('about_section_content_two'));
 	$customAboutSubtitleThree = get_option('about_section_subtitle_three');
-	$customAboutContentThree = get_option('about_section_content_three');
-	$customAboutBtnText = get_option('about_section_btn_text');
-	$customAboutBtnURL = get_option('about_section_btn_url');
-	$customServicesBtnText = get_option('about_section_btn_text');
-	$customServicesBtnURL = get_option('about_section_btn_url');
+	$customAboutContentThree = esc_attr(get_option('about_section_content_three'));
+	$customAboutBtnText = esc_attr(get_option('about_section_btn_text'));
+	$customAboutBtnURL = esc_attr(get_option('about_section_btn_url'));
+	$customServicesBtnText = esc_attr(get_option('about_section_btn_text'));
+	$customServicesBtnURL = esc_attr(get_option('about_section_btn_url'));
 ?>
 			<section class="slider-section">
 				<div class="main-page">
@@ -122,8 +120,8 @@ get_header(); ?>
 											<?php the_post_thumbnail(); ?>
 										</div>
 										<div class="col-md-7 col-xs-12">
-											<h2><?php the_title(); ?></h2>
-											<?php the_content('Read more '); ?>
+											<h2><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h2>
+											<?php the_excerpt(); ?>
 										</div>
 									</div>
 								</article>				
@@ -202,11 +200,12 @@ get_header(); ?>
 						<div class="col-md-6 col-sm-12 col-xs-12">
 							<a class="blue-btn" href="<?php print $customButtonURL; ?>"><?php print $customButtonText ?></a>
 						</div>
+					</div>
 				</div>
-			</section>
+			</section><!-- bottom info bar -->
 		</main>
 	</div>
-	
+</div>
 <?php
 
 get_footer(); 
